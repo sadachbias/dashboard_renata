@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { type TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
+import dashboardReducer from './slices/dashboardSlice'
 import uiReducer from './slices/uiSlice'
 
 // Importa tus slices aquí
@@ -8,7 +9,8 @@ import uiReducer from './slices/uiSlice'
 export const store = configureStore({
   reducer: {
     // example: exampleReducer,
-    ui: uiReducer
+    ui: uiReducer,
+    dashboard: dashboardReducer
   }
 })
 
