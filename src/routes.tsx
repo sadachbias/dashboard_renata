@@ -10,17 +10,17 @@ import Users from './pages/Users'
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route path='/' element={<MainLayout />}>
+      <Route path="/" element={<MainLayout />}>
         <Route index element={<Dashboard />} />
-        <Route path='dashboard' element={<Dashboard />} />
-        <Route path='charts' element={<Charts />} />
-        <Route path='mensajes' element={<Messages />} />
-        <Route path='reportes' element={<Reports />} />
-        <Route path='usuarios' element={<Users />} />
+        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="charts" element={<Charts />} />
+        <Route path="mensajes" element={<Messages />} />
+        <Route path="reportes" element={<Reports />} />
+        <Route path="usuarios" element={<Users />} />
 
-        <Route path='*' element={<div>404 Not Found</div>} />
+        <Route path="*" element={<div>404 Not Found</div>} />
       </Route>
-      <Route path='/login' element={<Login />} />
+      <Route path="/login" element={<Login />} />
     </Routes>
   )
 }

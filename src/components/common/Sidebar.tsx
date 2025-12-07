@@ -24,7 +24,7 @@ interface MenuItem {
 const menuItems: MenuItem[] = [
   {
     label: 'Dashboard',
-    icon: <LayoutDashboard className='w-5 h-5' />,
+    icon: <LayoutDashboard className="h-5 w-5" />,
     href: '/dashboard'
   },
   //   {
@@ -40,7 +40,7 @@ const menuItems: MenuItem[] = [
 
   {
     label: 'Usuarios',
-    icon: <Users className='w-5 h-5' />,
+    icon: <Users className="h-5 w-5" />,
     href: '/usuarios',
     allowedRoles: ['admin']
   },
@@ -51,12 +51,12 @@ const menuItems: MenuItem[] = [
   //   },
   {
     label: 'Mensajes ',
-    icon: <MessageCircle className='w-5 h-5' />,
+    icon: <MessageCircle className="h-5 w-5" />,
     href: '/mensajes'
   },
   {
     label: 'Reportes ',
-    icon: <ChartArea className='w-5 h-5' />,
+    icon: <ChartArea className="h-5 w-5" />,
     href: '/reports'
   }
   //   {
@@ -102,14 +102,10 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ isOpen }) => {
 
   return (
     <aside
-      className={`
-          bg-white shadow-sm   h-[calc(100vh-4rem)]
-        transition-all duration-300 z-30
-        ${isOpen ? ' w-64 opacity-100' : 'w-0 opacity-0'}
-      `}
+      className={`z-30 h-[calc(100vh-4rem)] bg-white shadow-sm transition-all duration-300 ${isOpen ? 'w-64 opacity-100' : 'w-0 opacity-0'} `}
     >
-      <nav className='p-4'>
-        <ul className='space-y-2'>
+      <nav className="p-4">
+        <ul className="space-y-2">
           {/* Solo mostrar items permitidos por rol */}
           {menuItems
             //.filter((item) => !item.allowedRoles || item.allowedRoles.includes(user?.role))
@@ -119,16 +115,12 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ isOpen }) => {
                   <div>
                     <button
                       onClick={() => toggleExpand(item.label)}
-                      className={`
-                      flex items-center w-full gap-2 px-4 py-2 rounded
-                      transition-colors duration-200 cursor-pointer
-                      ${isSubmenuActive(item.submenu) ? 'bg-blue-900 text-white' : 'text-gray-700 hover:bg-gray-100'}
-                    `}
+                      className={`flex w-full cursor-pointer items-center gap-2 rounded px-4 py-2 transition-colors duration-200 ${isSubmenuActive(item.submenu) ? 'bg-blue-900 text-white' : 'text-gray-700 hover:bg-gray-100'} `}
                     >
                       {item.icon}
-                      <span className='flex-1'>{item.label}</span>
+                      <span className="flex-1">{item.label}</span>
                       <motion.div animate={{ rotate: expandedItem === item.label ? 450 : 0 }} transition={{ duration: 0.2 }}>
-                        <ChevronRight className='w-4 h-4' />
+                        <ChevronRight className="h-4 w-4" />
                       </motion.div>
                     </button>
                     <AnimatePresence>
@@ -138,18 +130,14 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ isOpen }) => {
                           animate={{ height: 'auto', opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
                           transition={{ duration: 0.2 }}
-                          className='overflow-hidden'
+                          className="overflow-hidden"
                         >
-                          <div className='ml-4 mt-2 space-y-1'>
+                          <div className="mt-2 ml-4 space-y-1">
                             {item.submenu.map((subItem, subIndex) => (
                               <button
                                 key={subIndex}
                                 onClick={() => navigate(subItem.href)}
-                                className={`
-                                flex items-center w-full gap-2 px-4 py-2 rounded
-                                transition-colors duration-200 cursor-pointer
-                                ${isActive(subItem.href) ? 'bg-blue-100 text-gray-900' : 'text-gray-600 hover:bg-gray-100'}
-                              `}
+                                className={`flex w-full cursor-pointer items-center gap-2 rounded px-4 py-2 transition-colors duration-200 ${isActive(subItem.href) ? 'bg-blue-100 text-gray-900' : 'text-gray-600 hover:bg-gray-100'} `}
                               >
                                 {subItem.icon}
                                 <span>{subItem.label}</span>
@@ -163,11 +151,7 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ isOpen }) => {
                 ) : (
                   <button
                     onClick={() => navigate(item.href!)}
-                    className={`
-                    flex items-center w-full gap-2 px-4 py-2 rounded
-                    transition-colors duration-200 cursor-pointer
-                    ${isActive(item.href!) ? 'bg-blue-900 text-white' : 'text-gray-700 hover:bg-gray-100'}
-                  `}
+                    className={`flex w-full cursor-pointer items-center gap-2 rounded px-4 py-2 transition-colors duration-200 ${isActive(item.href!) ? 'bg-blue-900 text-white' : 'text-gray-700 hover:bg-gray-100'} `}
                   >
                     {item.icon}
                     {<span>{item.label}</span>}
